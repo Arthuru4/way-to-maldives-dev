@@ -18,8 +18,15 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
 img {
-  height: 20rem;
-  width: auto;
+  height: auto;
+  width: 100%;
+  max-width: 70vh;
+  max-height: 40vh;
 }
 </style>
