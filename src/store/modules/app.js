@@ -11,6 +11,7 @@ const state = {
 
 const mutations = {
   TOGGLE_SIDEBAR: state => {
+    debugger
     state.sidebar.opened = !state.sidebar.opened;
     state.sidebar.withoutAnimation = false;
     if (state.sidebar.opened) {

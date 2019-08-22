@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "base",
+  name: 'Wrapper',
   props: {
     msg: String
   }
