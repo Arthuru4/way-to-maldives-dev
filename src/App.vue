@@ -1,21 +1,42 @@
 <template>
   <div id="app" :class="classObj">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
+    <div
+      v-if="device === 'mobile' && sidebar.opened"
+      class="drawer-bg"
+      @click="handleClickOutside"
+    ></div>
     <div class="content">
       <hamburger
         v-if="device === 'mobile'"
         id="hamburger-container"
-        :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+        :is-active="sidebar.opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
 
-      <div class="header">HERE IS A HEAD</div>
+      <div class="header"></div>
     </div>
 
     <div class="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/islands">Islands</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/">
+        <span class="icon">
+          <svg-icon icon-class="star" />
+        </span>
+        Home
+      </router-link>
+      <router-link to="/islands">
+        <span>
+          <svg-icon icon-class="international" />
+        </span>
+        Islands
+      </router-link>
+      <router-link to="/about">
+        <span>
+          <svg-icon icon-class="message" />
+        </span>
+        About
+      </router-link>
     </div>
-
     <div class="content">
       <router-view />
     </div>
@@ -25,7 +46,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import ResizeMixin from './mixins/ResizeHandler.js';
-import Hamburger from './components/Hamburger'
+import Hamburger from './components/Hamburger';
 
 export default {
   methods: {
@@ -33,7 +54,7 @@ export default {
       this.$store.dispatch('app/toggleSideBar');
     },
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false });
     }
   },
   components: {
@@ -49,7 +70,7 @@ export default {
         // openSidebar: this.sidebar.opened,
         // withoutAnimation: this.sidebar.withoutAnimation,
         // mobile: this.device === 'mobile'
-      }
+      };
     }
   }
 };
@@ -81,8 +102,8 @@ $hiddenSideBarWidth: 50px;
   height: 100%;
   float: left;
   cursor: pointer;
-  transition: background .3s;
-  -webkit-tap-highlight-color:transparent;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background: rgba(0, 0, 0, 0.025);
@@ -117,15 +138,23 @@ $hiddenSideBarWidth: 50px;
     }
 
     .nav a {
+      padding: 0 10px;
+      text-align: left;
+
       margin: 10px 0 !important;
       display: block !important;
       border: solid 2px cyan !important;
     }
 
+    .nav a span{
+      /*font-size: 20px;*/
+      padding: 10px;
+    }
+
     .content {
       min-height: 100%;
-      -webkit-transition: margin-left .28s;
-      transition: margin-left .28s;
+      -webkit-transition: margin-left 0.28s;
+      transition: margin-left 0.28s;
       margin-left: $sideBarWidth;
       position: relative;
       padding-left: 20px;
@@ -136,9 +165,9 @@ $hiddenSideBarWidth: 50px;
       transition: width 0.28s;
       width: $hiddenSideBarWidth + 20px !important;
       background-image: linear-gradient(
-                      to right,
-                      #00c4c3 0%,
-                      #04244b 100%
+        to right,
+        #00c4c3 0%,
+        #04244b 100%
       ) !important;
 
       height: 100%;
@@ -151,13 +180,23 @@ $hiddenSideBarWidth: 50px;
     }
 
     .nav a {
-      font-size: 0px;
+      font-size: 0;
+      margin-left: 0;
+      padding-bottom: 20px;
+      span {
+        color: #f9a50c;
+
+        font-size: 20px;
+      }
+      /*.router-link-exact-active {*/
+      /*  color: #ffffff;*/
+      /*}*/
     }
 
     .content {
       min-height: 100%;
-      -webkit-transition: margin-left .28s;
-      transition: margin-left .28s;
+      -webkit-transition: margin-left 0.28s;
+      transition: margin-left 0.28s;
       margin-left: $hiddenSideBarWidth;
       position: relative;
       padding-left: 20px;
@@ -174,8 +213,8 @@ $hiddenSideBarWidth: 50px;
 }
 .content {
   min-height: 100%;
-  -webkit-transition: margin-left .28s;
-  transition: margin-left .28s;
+  -webkit-transition: margin-left 0.28s;
+  transition: margin-left 0.28s;
   position: relative;
 }
 
@@ -190,9 +229,9 @@ $hiddenSideBarWidth: 50px;
 }
 
 .nav a.router-link-exact-active {
-
-  color: #f9a50c;
+  color: #ffffff;
 }
+
 .header {
   color: cyan;
   border: solid 2px black;

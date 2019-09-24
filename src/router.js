@@ -12,7 +12,11 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'Example',
+        icon: 'example'
+      }
     },
     {
       path: '/islands',
