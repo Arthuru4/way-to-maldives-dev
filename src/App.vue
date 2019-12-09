@@ -19,23 +19,33 @@
 
     <div class="nav">
       <router-link to="/">
-        <span class="icon">
-          <svg-icon icon-class="star" />
-        </span>
-        Home
+        <div class="link">
+          <span v-if="device === 'mobile'">
+            <svg-icon icon-class="star" />
+          </span>
+          Home
+        </div>
       </router-link>
+      <div class="hor-line" v-if="device === 'mobile'"></div>
       <router-link to="/islands">
-        <span>
-          <svg-icon icon-class="international" />
-        </span>
-        Islands
+        <div class="link">
+          <span v-if="device === 'mobile'">
+            <svg-icon icon-class="international" />
+          </span>
+          Islands
+        </div>
       </router-link>
+      <div class="hor-line" v-if="device === 'mobile'"></div>
+
       <router-link to="/about">
-        <span>
-          <svg-icon icon-class="message" />
-        </span>
-        About
+        <div class="link">
+          <span v-if="device === 'mobile'">
+            <svg-icon icon-class="message" />
+          </span>
+          About
+        </div>
       </router-link>
+      <div class="hor-line" v-if="device === 'mobile'"></div>
     </div>
     <div class="content">
       <router-view />
@@ -84,7 +94,7 @@ $hiddenSideBarWidth: 50px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
   height: 100%;
   width: 100%;
 }
@@ -117,7 +127,34 @@ $hiddenSideBarWidth: 50px;
   font-size: 0;
 }
 
+.link {
+  transition: box-shadow 0.3s;
+  height: 100%;
+  display: inline-block;
+  padding: 10px;
+  width: 100px;
+  background-image: linear-gradient(to bottom, #00c4c3 0%, #04247b 100%);
+  border-radius: 10px;
+  box-shadow: inset 0 0 43px -7px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 992px) {
+  .nav {
+    .hor-line {
+      border-top: 2px solid rgba(255,255,255,0.3);
+    }
+    border-radius: 0 !important;
+  }
+
+  .link {
+    transition: box-shadow 0.3s;
+    padding: 0 !important;
+    width: 100%;
+    height: 60px !important;
+    background-image: unset;
+    border-radius: unset;
+    box-shadow: unset;
+  }
   .un-hidden-nav {
     .nav {
       transition: width 0.28s;
@@ -138,16 +175,12 @@ $hiddenSideBarWidth: 50px;
     }
 
     .nav a {
-      padding: 0 10px;
       text-align: left;
-
-      margin: 10px 0 !important;
       display: block !important;
-      border: solid 2px cyan !important;
     }
 
-    .nav a span{
-      /*font-size: 20px;*/
+    .nav a span {
+      line-height: 3.5em;
       padding: 10px;
     }
 
@@ -161,6 +194,10 @@ $hiddenSideBarWidth: 50px;
     }
   }
   .hidden-nav {
+    .nav a.router-link-exact-active .line {
+      box-shadow: unset;
+    }
+
     .nav {
       transition: width 0.28s;
       width: $hiddenSideBarWidth + 20px !important;
@@ -182,15 +219,12 @@ $hiddenSideBarWidth: 50px;
     .nav a {
       font-size: 0;
       margin-left: 0;
-      padding-bottom: 20px;
+      display: block !important;
       span {
-        color: #f9a50c;
-
+        line-height: 3em;
+        color: #ffffff;
         font-size: 20px;
       }
-      /*.router-link-exact-active {*/
-      /*  color: #ffffff;*/
-      /*}*/
     }
 
     .content {
@@ -206,10 +240,9 @@ $hiddenSideBarWidth: 50px;
 .nav {
   width: 100%;
   box-sizing: border-box;
-  padding: 20px;
   background-image: linear-gradient(to bottom, #00c4c3 0%, #04247b 100%);
 
-  border: solid 2px red;
+  border-radius: 5px;
 }
 .content {
   min-height: 100%;
@@ -221,15 +254,17 @@ $hiddenSideBarWidth: 50px;
 .nav a {
   border: none;
   cursor: pointer;
-  margin-left: 20px;
   font-weight: bold;
-  color: #f9a50c;
+  color: #ffffff;
   text-decoration: none;
   display: inline-block;
 }
 
 .nav a.router-link-exact-active {
   color: #ffffff;
+}
+.nav a.router-link-exact-active .link {
+  box-shadow: inset 0 0 43px -7px rgba(0, 255, 0, 0.2);
 }
 
 .header {

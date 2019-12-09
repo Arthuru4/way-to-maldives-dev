@@ -13,13 +13,13 @@ import Island from '@/components/Island.vue';
 const islandInfo = [
   {
     key: 1,
-    head: 'some island',
+    head: 'some title',
     text: 'some text',
     imgSrc: 'some imgSrc'
   },
   {
     key: 2,
-    head: 'some island',
+    head: 'some title',
     text: 'some text',
     imgSrc: 'some imgSrc'
   }
