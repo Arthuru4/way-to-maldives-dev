@@ -4,6 +4,7 @@ import store from './store'
 import Element from 'element-ui'
 import router from './router';
 import './icons' // icon
+import './registerServiceWorker'
 
 Vue.config.productionTip = false;
 Vue.use(Element)
