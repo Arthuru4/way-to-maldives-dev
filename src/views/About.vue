@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <h1>About us</h1>
+    <h1>Плыву на Мальдивы!</h1>
+    <img alt="WTM LOGO" src="@/assets/boat.webp" />
+
     <div class="text-content">
       <p>
         Хотите отдохнуть на Мальдивах недорого? Тогда мы с радостью Вам поможем!
@@ -17,14 +19,27 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .about {
-  width: 100%;
+  width: 75vw;
   position: relative;
   overflow: hidden;
+  margin: auto;
+  background: linear-gradient(to right, #FFFFFF, #A5C1E5, #77A4DF);
+
+  h1 {
+    line-height: 42pt;
+    margin: 0;
+  }
+  img {
+    opacity: 80%;
+    width: 100%;
+  }
 }
+
 .text-content {
   font-weight: bold;
+  width: 100%;
 }
 /*img {*/
 /*  height: 20rem;*/
